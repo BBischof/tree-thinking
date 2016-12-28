@@ -129,6 +129,8 @@ Where `class_name` is the name of the class label you're attempting to assign. `
 
 If you're using `sklearn` and want to output your models, under the Python directory is a module for reading and writing YAML in the above format.
 
+If you wish to connect your `sklearn` DTs with your Rails front end, check out the Ruby gem.
+
 One can also use the above schema as a guideline for writing decision tree logic in an extensible way.
 
 ## The name
