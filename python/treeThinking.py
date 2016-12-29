@@ -1,12 +1,12 @@
 '''
-treeThinking module https://github.com/BBischof/treeThinking
+treethinking module https://github.com/BBischof/treeThinking
 originally based on http://scikit-learn.org/stable/auto_examples/tree/plot_unveil_tree_structure.html
 '''
 
 import numpy as np
 import random
 
-def writeTreeYaml(tree, feature_list, label):
+def write_tree_yaml(tree, feature_list, label):
     n_nodes = tree.tree_.node_count
     children_left = tree.tree_.children_left
     children_right = tree.tree_.children_right
@@ -44,10 +44,10 @@ def writeTreeYaml(tree, feature_list, label):
             out += ("%sresults: \n" % ((node_depth[i]*2+1) * "  "))
     return out
 
-def yamlSwitch(vector, ytree, label):
+def yaml_switch(vector, ytree, label):
     if 'feature_idx' in ytree.keys() and 'thr' in ytree.keys():
         if 'op' not in ytree.keys():
-            return yamlSwitch(vector,
+            return yaml_switch(vector,
                 ytree['results'][(vector[ytree['feature_idx']] <= ytree['thr'])],
                 label)
         else:
@@ -59,7 +59,7 @@ def yamlSwitch(vector, ytree, label):
                    "!=": (lambda x,y: x!=y),
                    "<>": (lambda x,y: x!=y)}
             if ytree['op'] in ops.keys():
-              return yamlSwitch(vector,
+              return yaml_switch(vector,
                 ytree['results'][ops[ytree['op']](vector[ytree['feature_idx']], ytree['thr'])],
                 label)
             else:
