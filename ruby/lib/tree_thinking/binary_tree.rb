@@ -3,7 +3,7 @@ module TreeThinking
     attr_reader :name
     attr_accessor :tree
 
-    Node = Struct.new(:feature_idx, :operator, :threshold, :probablity, :results)
+    Node = Struct.new(:feature_key, :operator, :threshold, :probablity, :results)
 
     def initialize(name: nil)
       @name = name
@@ -23,13 +23,13 @@ module TreeThinking
 
     def decision(node, answer_vector)
       case node.operator
-      when '=' then answer_vector[node.feature_idx] == node.threshold
-      when '>' then answer_vector[node.feature_idx] > node.threshold
-      when '<' then answer_vector[node.feature_idx] < node.threshold
-      when '>=' then answer_vector[node.feature_idx] >= node.threshold
-      when '<=' then answer_vector[node.feature_idx] <= node.threshold
+      when '=' then answer_vector[node.feature_key] == node.threshold
+      when '>' then answer_vector[node.feature_key] > node.threshold
+      when '<' then answer_vector[node.feature_key] < node.threshold
+      when '>=' then answer_vector[node.feature_key] >= node.threshold
+      when '<=' then answer_vector[node.feature_key] <= node.threshold
       else
-        answer_vector[node.feature_idx] <= node.threshold
+        answer_vector[node.feature_key] <= node.threshold
       end
     end
   end

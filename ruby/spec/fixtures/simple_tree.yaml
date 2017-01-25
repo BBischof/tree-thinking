@@ -1,23 +1,21 @@
 ---
-class_name: Likes chocolate icecream
+tree_key: likes_chocolate_ice_cream
 features:
-  - name: Likes ice cream
-    type: binary
-  - name: Likes chocolate
-    type: binary
-tree:
-  feature_idx: 0
-  op: =
-  thr: 1
+  - name: likes_ice_cream
+  - name: likes_chocolate
+nodes:
+  feature_key: 'likes_ice_cream'
+  threshold: 1
+  operator: =
   results:
     true:
-      feature_idx: 1
-      op: '>'
-      thr: 0.5
+      feature_key: 'likes_chocolate'
+      threshold: 0.5
+      operator: '>'
       results:
         true:
-          prob: 0.8
+          probability: 0.8
         false:
-          prob: 0.1
+          probability: 0.1
     false:
-      prob: 0
+      probability: 0

@@ -13,8 +13,8 @@ module TreeThinking
     end
 
     def build!
-      btree = BinaryTree.new(name: tree['class_name'])
-      btree.tree = nodify(tree['tree'])
+      btree = BinaryTree.new(name: tree['tree_key'])
+      btree.tree = nodify(tree['nodes'])
       btree
     end
 
@@ -22,10 +22,10 @@ module TreeThinking
 
     def nodify(attrs)
       BinaryTree::Node.new(
-        attrs['feature_idx'],
-        attrs['op'],
-        attrs['thr'],
-        attrs['prob'],
+        attrs['feature_key'],
+        attrs['operator'],
+        attrs['threshold'],
+        attrs['probability'],
         Hash[attrs.fetch('results', {}).map do |return_val, child_node|
           [return_val, nodify(child_node)]
         end]
